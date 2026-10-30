@@ -1,0 +1,64 @@
+/* Phi Agent brand typography — self-hosted.
+ *
+ * The upstream package shipped Collapse / Mondwest / Neuebit / Rules as
+ * .woff2 binaries. Those are commercial typefaces: the package's MIT licence
+ * covers its own source, not the right to redistribute someone else's fonts.
+ * They are not vendored here.
+ *
+ * These four are the Phi visual identity, all open-licensed for commercial
+ * use (Figtree and Spectral: SIL OFL 1.1; DM Mono: SIL OFL 1.1), converted
+ * from the TTFs in the brand kit. Self-hosted on purpose — no third-party
+ * CDN request at page load, which also keeps the dashboard usable on an
+ * air-gapped install.
+ *
+ * The --font-* variable contract matches upstream, so consumers need no
+ * changes. Legacy aliases point at the nearest brand equivalent rather than
+ * disappearing, so existing class names keep resolving instead of silently
+ * falling back to a system stack.
+ */
+
+@font-face {
+  font-family: 'Figtree';
+  font-style: normal;
+  font-weight: 400 700;
+  font-display: swap;
+  src: url('../fonts/Figtree.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Spectral';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('../fonts/Spectral-Regular.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Spectral';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url('../fonts/Spectral-SemiBold.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'DM Mono';
+  font-style: normal;
+  font-weight: 400 500;
+  font-display: swap;
+  src: url('../fonts/DMMono.woff2') format('woff2');
+}
+
+:root {
+  --font-sans: 'Figtree', system-ui, -apple-system, 'Segoe UI', Roboto,
+    'Helvetica Neue', Arial, sans-serif;
+  --font-mono: 'DM Mono', ui-monospace, 'SF Mono', 'Cascadia Mono', Menlo,
+    Consolas, monospace;
+  --font-display: 'Spectral', Georgia, 'Times New Roman', serif;
+
+  /* Legacy aliases from the upstream design language. */
+  --font-rules-compressed: var(--font-display);
+  --font-rules-expanded: var(--font-display);
+  --font-mondwest: var(--font-sans);
+  --font-neuebit: var(--font-display);
+}

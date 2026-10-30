@@ -1,0 +1,46 @@
+@phi/ui
+Copyright (c) 2026 Phi Lab Foundation
+
+A derivative work of @nous-research/ui 0.18.2, created by Nous Research and
+distributed under the MIT License.
+
+    @nous-research/ui
+    Copyright (c) 2025 Nous Research
+
+Changes from upstream 0.18.2
+----------------------------
+
+1. Renamed to @phi/ui and repointed at Phi Lab's internal registry.
+
+2. Bundled typefaces removed. Upstream shipped Collapse, Mondwest, Neuebit
+   and Rules (Compressed/Expanded) as .woff2 files. Those are commercial
+   typefaces from their respective foundries; the package's MIT licence
+   covers its own source, not the right to redistribute third-party font
+   binaries. This fork therefore ships no font files.
+
+   The --font-* CSS variable contract is unchanged, so consumers need no code
+   changes. src/styles/fonts.css now points those variables at the Phi visual
+   identity, all open-licensed for commercial use:
+
+       --font-sans     Figtree
+       --font-display  Spectral
+       --font-mono     DM Mono
+
+   The legacy aliases (--font-rules-compressed, --font-rules-expanded,
+   --font-mondwest, --font-neuebit) are kept as pointers to the above so that
+   existing class names keep resolving instead of silently falling back to a
+   system stack. Anyone holding a licence for the original typefaces can
+   register their own @font-face rules against the same variables.
+
+3. NousGirlBadge removed — an illustrated Nous mascot, not ours to ship.
+
+4. Storybook, MSW, Playwright and Vitest dev-dependencies dropped; this fork
+   is consumed as a library and does not build the story catalogue. The
+   peer-dependency type sources (three, gsap, leva, motion, plot) are kept
+   because src imports them in 11 places.
+
+Component APIs are deliberately untouched, so the 46 call sites in the Phi
+Agent dashboard needed no changes.
+
+Phi Agent and Phi Lab Foundation are not affiliated with, endorsed by, or
+sponsored by Nous Research.

@@ -1,0 +1,12 @@
+# Build output
+dist/
+node_modules/
+
+# Storybook (dropped from this fork, but keep the ignore in case it comes back)
+storybook-static/
+
+# Editor / OS noise
+.DS_Store
+*.log
+.vscode/
+.idea/
